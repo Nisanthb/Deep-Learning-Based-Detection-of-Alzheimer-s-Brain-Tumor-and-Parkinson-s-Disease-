@@ -32,7 +32,6 @@ Total dataset size: 103,553 MRI images. All data was anonymized and ethically so
 ## Model Architecture
 
 * **Base Network**: ResNet50 (pretrained on ImageNet)
-* **Fine-tuning**: Final layers retrained for 4-class classification.
 * **Input Size**: 224x224 RGB images
 * **Optimizer**: Adam / SGD
 * **Loss Function**: CrossEntropyLoss
