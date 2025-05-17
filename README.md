@@ -1,46 +1,69 @@
-# Deep-Learning-Based-Detection-of-Alzheimer-s-Brain-Tumor-and-Parkinson-s-Disease
-## Brain Disease Classification Using Deep Learning
-### Overview
-This project focuses on the automated classification of brain diseases—Alzheimer's Disease, Parkinson's Disease, and Brain Tumors—using deep learning techniques applied to medical imaging data. Early and accurate detection of such neurological disorders can play a crucial role in timely intervention and treatment planning.
-The project involves developing, training, and evaluating a Convolutional Neural Network (CNN) model that can analyze brain MRI images and classify them into one of the following categories:
+# Brain Disease Detection Using ResNet50
 
-Alzheimer's Disease
-Parkinson's Disease
-Brain Tumor
+## Project Overview
 
-### Dataset
+This project focuses on the automated detection and classification of brain diseases, specifically Alzheimer's disease, Parkinson's disease, and brain tumors, using deep learning. By utilizing the ResNet50 convolutional neural network and transfer learning techniques, the system analyzes MRI brain images and classifies them into one of the aforementioned conditions or identifies them as healthy. A web-based user interface facilitates real-time predictions, making the tool suitable for potential use in hospitals, diagnostic centers, and research institutions.
 
-The project uses publicly available datasets from sources such as:
-Kaggle 
-Neuroimaging Archives (e.g., ADNI, TCIA)
+## Objectives
 
-Each image is preprocessed (resized, normalized) and labeled according to the corresponding condition. The dataset is split into training, validation, and test sets to evaluate model performance.
+* Automatically detect and classify Alzheimer's disease, Parkinson's disease, and brain tumors.
+* Utilize transfer learning to enhance performance with limited datasets.
+* Apply advanced preprocessing techniques to improve image quality and model performance.
+* Develop a web-based platform for real-time diagnosis and usability.
+* Achieve high accuracy and robust classification performance.
 
-### Features
+## Dataset Summary
 
-Deep learning model trained using PyTorch
-Data preprocessing and augmentation to improve model generalization
-Multi-class classification output with softmax activation
-Performance metrics: accuracy, confusion matrix, precision, recall, F1-score
-Visualization of training history and predictions
+The system is trained on publicly available MRI datasets:
 
-### Website (local) 
+* **Alzheimer's** (OASIS): 86,390 images across 4 stages.
+* **Parkinson's** (Kaggle): 15,032 images across 5 stages.
+* **Brain Tumors** (Kaggle): 5,712 images across 4 tumor classes.
 
-A simple web interface allows users to:
-Upload a brain MRI image
-View the model's predicted disease class
-Understand confidence scores for each category
+Total dataset size: 103,553 MRI images. All data was anonymized and ethically sourced.
 
-### Model Architecture
+## Preprocessing Techniques
 
-The current model uses pre-trained models (ResNet50) to improve accuracy and reduce training time.
+* **Bias Field Correction**: N4ITK for intensity inhomogeneity correction.
+* **Spatial Smoothing**: Gaussian filtering for noise reduction.
+* **Spatial Normalization**: Aligning scans to MNI template.
+* **Nuisance Regression**: Removing scanner noise and non-brain signals.
 
-### Evaluation Results
+## Model Architecture
 
-| Class       | Precision | Recall | F1-Score |
-| ----------- | --------- | ------ | -------- |
-| Alzheimer's | 0.95      | 0.94   | 0.94     |
-| Parkinson's | 0.91      | 0.90   | 0.90     |
-| Brain Tumor | 0.93      | 0.92   | 0.92     |
-| Normal      | 0.96      | 0.97   | 0.96     |
+* **Base Network**: ResNet50 (pretrained on ImageNet)
+* **Fine-tuning**: Final layers retrained for 4-class classification.
+* **Input Size**: 224x224 RGB images
+* **Optimizer**: Adam / SGD
+* **Loss Function**: CrossEntropyLoss
+* **Performance Metrics**: Accuracy, F1-Score, Precision, Recall, Confusion Matrix
 
+## Training and Results
+
+* **Initial Accuracy**: 71%
+* **Final Accuracy**: 99% (after tuning hyperparameters like learning rate, dropout, weight decay)
+* **Evaluation**: Robust performance on all classes, high generalization ability, confusion matrix and F1-scores confirm strong classification.
+
+## Deployment
+
+The model is integrated into a user-friendly web interface:
+
+* **Frontend**: HTML, CSS, JavaScript
+* **Backend**: Python (Flask or similar), handling model inference
+* **Functionality**: Upload MRI, receive disease prediction in real-time
+
+## Real-World Applications
+
+* Assists clinicians in early-stage diagnosis.
+* Supports medical learning and research.
+* Useful in low-resource environments with limited radiological expertise.
+
+## Limitations and Future Work
+
+* Trained on structural MRI only (no severity staging or segmentation).
+* Requires further validation on diverse, real-world clinical data.
+* Future scope includes multi-modal imaging support, mobile deployment, and integration into telemedicine systems.
+* 
+---
+
+For more information, please refer to the full project report included in the repository.
