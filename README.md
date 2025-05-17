@@ -1,0 +1,1 @@
+# Deep-Learning-Based-Detection-of-Alzheimer-s-Brain-Tumor-and-Parkinson-s-Disease-
